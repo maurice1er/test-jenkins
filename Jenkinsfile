@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Build Docker Image') {
             steps {
-                sh 'pwd'
+                sh 'docker --version'
             }
         }
         stage('Test') {
