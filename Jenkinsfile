@@ -5,7 +5,7 @@ pipeline {
         stage('Build Dockerfile') {
             steps {
                 sh 'pwd'
-                sh 'ls -la pwd'
+                sh 'ls -la'
                 sh 'cd pwd'
                 sh 'docker build -t 1.0.0 .'
             }
