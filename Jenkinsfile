@@ -1,9 +1,9 @@
 pipeline {
 
-    agent any
-    /* agent {
-        label 'docker'
-    } */
+    // agent any
+    agent {
+        label docker
+    }
     
     stages {
 
