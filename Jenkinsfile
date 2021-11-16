@@ -1,12 +1,16 @@
 pipeline {
     agent any
+    environment {
+        dockerImage = ''
+    }
 
     stages {
         stage('Build Dockerfile') {
             steps {
-                sh 'pwd'
-                sh 'ls -la'
-                sh 'docker build -t mynginx:1.0.0  .'
+                script {
+                    dockerImage = docker.build registry
+                }
+                // sh 'docker build -t mynginx:1.0.0  .'
             }
         }
         stage('Push to Dockerhub') {
