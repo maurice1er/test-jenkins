@@ -1,10 +1,16 @@
 pipeline {
-    agent any
+    agent {
+        node {
+            label 'docker'
+        }
+    }
 
     stages {
-        stage('Build Docker Image') {
+        stage('Build Image') {
             steps {
-                sh 'docker --version'
+                script {
+                	app = docker.build("70077007/test-jenkins")
+                }
             }
         }
         stage('Test') {
