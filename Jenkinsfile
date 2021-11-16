@@ -13,21 +13,20 @@ pipeline {
             }
             steps {
                 script {
-                	// app = docker.build("70077007/test-jenkins")
-                    sh '70077007/test-jenkins --version'
+                	app = docker.build("70077007/test-jenkins")
+                    // sh '70077007/test-jenkins --version'
                 }
             }
         }
-        stage('Test') {
+        stage('Push Image') {
             steps {
-                echo 'Testing..'
-                sh 'ls -la'
+                script {
+			        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-access') {
+			        	app.push("${BUILD_NUMBER}")
+			            app.push("latest")
+			        }
+                }
             }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+        }  
     }
 }
