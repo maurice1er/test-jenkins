@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         dockerImage = ''
+        registry = '70077007/flask-neo4j'
     }
 
     stages {
