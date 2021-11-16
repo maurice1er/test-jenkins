@@ -1,9 +1,10 @@
 pipeline {
-		
+
+    agent any
     /* agent {
         label 'docker'
     } */
-
+    
     stages {
 
 	stage('Build and Run docker image') {
@@ -20,7 +21,7 @@ pipeline {
                 sh "docker run --name 70077007/test-jenkins:1.0.${BUILD_NUMBER} -d -p 8008:5000 70077007/test-jenkins:1.0.${BUILD_NUMBER}"
 		*/
             }
-         }     
+         }   
 
     }
 }
