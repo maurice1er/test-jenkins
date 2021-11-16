@@ -1,21 +1,20 @@
 pipeline {
     agent any
     environment {
-        imageName = '70077007/flask-neo4j'
+        imageName = '70077007/test-jenkins'
         registryCredential = 'dockerhub-access'
         // '70077007/flask-neo4j'
         dockerImage = ''
     }
 
     stages {
-        stage('Build Docker image') {
-            steps {
-                script {
-                    dockerImage = docker.build imageName
-                }
-                // sh 'docker build -t mynginx:1.0.0  .'
-            }
-        }
+        stage("Docker build"){
+            sh 'docker version'
+            sh 'docker tag mynginx:1.0.0 70077007/test-jenkins:0.0.1'
+            // sh 'docker build -t jhooq-docker-demo .'
+            // sh 'docker image list'
+            /// sh 'docker tag jhooq-docker-demo rahulwagh17/jhooq-docker-demo:jhooq-docker-demo'
+        } 
         /* stage('Push to Dockerhub') {
             steps {
                 sh 'docker tag mynginx:1.0.0 70077007/test-jenkins:0.0.1'
