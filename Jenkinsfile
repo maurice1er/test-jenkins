@@ -6,8 +6,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh 'ls -la'
-                sh 'cd pwd'
-                sh 'docker build -t 1.0.0 .'
+                sh 'docker build -t mynginx:1.0.0  .'
             }
         }
         stage('Push to Dockerhub') {
